@@ -7,13 +7,22 @@ const askAI = async (question) => {
     }
 
     const response = await axios.post(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${process.env.GEMINI_KEY}`,
+      "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent",
       {
         contents: [
           {
-            parts: [{ text: question }],
+            parts: [
+              {
+                text: `Answer in ONE WORD only.\nQuestion: ${question}`,
+              },
+            ],
           },
         ],
+      },
+      {
+        params: {
+          key: process.env.GEMINI_KEY,
+        },
       }
     );
 
@@ -29,6 +38,7 @@ const askAI = async (question) => {
       error.response?.data || error.message
     );
 
+    // because free quota issue
     return "Unavailable";
   }
 };
