@@ -6,10 +6,11 @@ dotenv.config();
 const app = express();
 
 app.use(express.json());
-console.log("KEY =", process.env.GEMINI_KEY);
+// console.log("KEY =", process.env.GEMINI_KEY);
 
 
-const EMAIL = "harry0514.be23@chitkara.edu.in";
+EMAIL="harry0514.be23@chitkara.edu.in";
+// console.log("KEY =", EMAIL);
 
 // ---------------- HEALTH ----------------
 app.get("/health", (req, res) => {
